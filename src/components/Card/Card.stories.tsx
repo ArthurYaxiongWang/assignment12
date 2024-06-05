@@ -9,9 +9,16 @@ export default {
 
 const Template: StoryFn<CardProps> = (args) => <Card {...args} />;
 
-export const CardPrimaryTest = Template.bind({});
-CardPrimaryTest.args = {
+export const DefaultCard  = Template.bind({});
+DefaultCard.args = {
   title: 'Card Title',
   content: 'This is the card content.',
   disabled: false,
+};
+
+export const DisabledCard = Template.bind({});
+DisabledCard.args = {
+  title: 'Card Title',
+  content: 'This is the card content.',
+  disabled: true,
 };

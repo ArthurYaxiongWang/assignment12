@@ -16,3 +16,11 @@ RadioButtonPrimaryTest.args = {
   value: 'value',
   disabled: false,
 };
+
+export const DisabledRadioButton = Template.bind({});
+DisabledRadioButton.args = {
+  label: 'Radio Button',
+  name: 'radio',
+  value: 'value',
+  disabled: true,
+};

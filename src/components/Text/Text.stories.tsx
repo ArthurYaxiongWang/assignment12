@@ -9,8 +9,14 @@ export default {
 
 const Template: StoryFn<TextProps> = (args) => <Text {...args} />;
 
-export const TextPrimaryTest = Template.bind({});
-TextPrimaryTest.args = {
+export const DefaultText = Template.bind({});
+DefaultText.args = {
   disabled: false,
   children: 'This is a text component',
+};
+
+export const DisabledText = Template.bind({});
+DisabledText.args = {
+  disabled: true,
+  children: 'This text component is disabled',
 };

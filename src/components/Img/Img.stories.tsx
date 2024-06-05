@@ -9,9 +9,16 @@ export default {
 
 const Template: StoryFn<ImgProps> = (args) => <Img {...args} />;
 
-export const ImgPrimaryTest = Template.bind({});
-ImgPrimaryTest.args = {
+export const DefaultImg = Template.bind({});
+DefaultImg.args = {
   src: 'https://via.placeholder.com/150',
   alt: 'Placeholder Image',
   disabled: false,
+};
+
+export const DisabledImg = Template.bind({});
+DisabledImg.args = {
+  src: 'https://via.placeholder.com/150',
+  alt: 'Placeholder Image',
+  disabled: true,
 };

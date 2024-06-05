@@ -8,8 +8,14 @@ export default {
 
 const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
 
-export const ButtonPrimaryTest = Template.bind({});
-ButtonPrimaryTest.args = {
+export const DefaultButton = Template.bind({});
+DefaultButton.args = {
   disabled: false,
+  label: 'Button',
+};
+
+export const DisabledButton = Template.bind({});
+DisabledButton.args = {
+  disabled: true,
   label: 'Button',
 };
