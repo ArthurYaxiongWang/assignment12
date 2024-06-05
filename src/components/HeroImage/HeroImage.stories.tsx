@@ -5,18 +5,34 @@ import { HeroImageProps } from './HeroImage.types';
 export default {
   title: 'ReactComponentLibrary/HeroImage',
   component: HeroImage,
+  argTypes: {
+    backgroundColorDisabled: { control: 'color' },
+    visible: { control: 'boolean' }
+  }
 } as Meta<typeof HeroImage>;
 
-const Template: StoryFn<HeroImageProps> = (args) => <HeroImage {...args} />;
+interface HeroImageStoryProps extends HeroImageProps {
+  visible: boolean;
+}
+
+const Template: StoryFn<HeroImageStoryProps> = (args) => (
+  <>
+    {args.visible && <HeroImage {...args} />}
+  </>
+);
 
 export const DefaultHeroImage = Template.bind({});
 DefaultHeroImage.args = {
-  src: 'https://via.placeholder.com/800x300',
   disabled: false,
+  label: 'Hero Image',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };
 
 export const DisabledHeroImage = Template.bind({});
 DisabledHeroImage.args = {
-  src: 'https://via.placeholder.com/800x300',
   disabled: true,
+  label: 'Hero Image',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };

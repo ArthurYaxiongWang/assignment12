@@ -5,22 +5,36 @@ import { RadioButtonProps } from './RadioButton.types';
 export default {
   title: 'ReactComponentLibrary/RadioButton',
   component: RadioButton,
+  argTypes: {
+    backgroundColorDisabled: { control: 'color' },
+    visible: { control: 'boolean' }
+  }
 } as Meta<typeof RadioButton>;
 
-const Template: StoryFn<RadioButtonProps> = (args) => <RadioButton {...args} />;
+interface RadioButtonStoryProps extends RadioButtonProps {
+  visible: boolean;
+}
 
-export const RadioButtonPrimaryTest = Template.bind({});
-RadioButtonPrimaryTest.args = {
-  label: 'Radio Button',
-  name: 'radio',
-  value: 'value',
+const Template: StoryFn<RadioButtonStoryProps> = (args) => (
+  <>
+    {args.visible && <RadioButton {...args} />}
+  </>
+);
+
+export const DefaultRadioButton = Template.bind({});
+DefaultRadioButton.args = {
   disabled: false,
+  name: 'radioGroup',
+  value: 'Option1',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };
 
 export const DisabledRadioButton = Template.bind({});
 DisabledRadioButton.args = {
-  label: 'Radio Button',
-  name: 'radio',
-  value: 'value',
   disabled: true,
+  name: 'radioGroup',
+  value: 'Option1',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };

@@ -1,18 +1,16 @@
-import styled from 'styled-components';
-import { RadioButtonProps } from './RadioButton.types';
+import styled from "styled-components";
+import { RadioButtonProps } from "./RadioButton.types";
 
-const StyledRadioButton = styled.input.attrs({ type: 'radio' })<{ disabled: boolean }>`
-  margin-right: 10px;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+const StyledRadioButton = styled.input.attrs({ type: 'radio' })<{ disabled: boolean; backgroundColorDisabled?: string }>`
+  background-color: ${(props) => (props.disabled ? props.backgroundColorDisabled || "#ccc" : "#fff")};
+  color: ${(props) => (props.disabled ? "#999" : "black")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
-const RadioButton: React.FC<RadioButtonProps> = ({ disabled = false, label, name, value, onChange }) => {
+function RadioButton({ disabled = false, name, value, backgroundColorDisabled }: RadioButtonProps) {
   return (
-    <label>
-      <StyledRadioButton disabled={disabled} name={name} value={value} onChange={onChange} />
-      {label}
-    </label>
+    <StyledRadioButton disabled={disabled} name={name} value={value} backgroundColorDisabled={backgroundColorDisabled} />
   );
-};
+}
 
 export default RadioButton;

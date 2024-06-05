@@ -1,13 +1,16 @@
-import styled from 'styled-components';
-import { ImgProps } from './Img.types';
+import styled from "styled-components";
+import { ImgProps } from "./Img.types";
 
-const StyledImg = styled.img<{ disabled: boolean }>`
-  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+const StyledImg = styled.img<{ disabled: boolean; backgroundColorDisabled?: string }>`
+  background-color: ${(props) => (props.disabled ? props.backgroundColorDisabled || "#ccc" : "#fff")};
+  filter: ${(props) => (props.disabled ? "grayscale(100%)" : "none")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
-const Img: React.FC<ImgProps> = ({ src, alt, disabled = false }) => {
-  return <StyledImg src={src} alt={alt} disabled={disabled} />;
-};
+function Img({ disabled = false, src, alt = "Image", backgroundColorDisabled }: ImgProps) {
+  return (
+    <StyledImg disabled={disabled} src={src} alt={alt} backgroundColorDisabled={backgroundColorDisabled} />
+  );
+}
 
 export default Img;

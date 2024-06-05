@@ -5,18 +5,34 @@ import { TextProps } from './Text.types';
 export default {
   title: 'ReactComponentLibrary/Text',
   component: Text,
+  argTypes: {
+    backgroundColorDisabled: { control: 'color' },
+    visible: { control: 'boolean' }
+  }
 } as Meta<typeof Text>;
 
-const Template: StoryFn<TextProps> = (args) => <Text {...args} />;
+interface TextStoryProps extends TextProps {
+  visible: boolean;
+}
+
+const Template: StoryFn<TextStoryProps> = (args) => (
+  <>
+    {args.visible && <Text {...args} />}
+  </>
+);
 
 export const DefaultText = Template.bind({});
 DefaultText.args = {
   disabled: false,
-  children: 'This is a text component',
+  content: 'Text',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };
 
 export const DisabledText = Template.bind({});
 DisabledText.args = {
   disabled: true,
-  children: 'This text component is disabled',
+  content: 'Text',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };

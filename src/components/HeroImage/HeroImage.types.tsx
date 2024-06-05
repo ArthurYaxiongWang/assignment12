@@ -1,4 +1,5 @@
 export interface HeroImageProps {
-  src: string;
   disabled?: boolean;
+  label?: string;
+  backgroundColorDisabled?: string;
 }

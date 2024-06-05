@@ -5,20 +5,36 @@ import { ImgProps } from './Img.types';
 export default {
   title: 'ReactComponentLibrary/Img',
   component: Img,
+  argTypes: {
+    backgroundColorDisabled: { control: 'color' },
+    visible: { control: 'boolean' }
+  }
 } as Meta<typeof Img>;
 
-const Template: StoryFn<ImgProps> = (args) => <Img {...args} />;
+interface ImgStoryProps extends ImgProps {
+  visible: boolean;
+}
+
+const Template: StoryFn<ImgStoryProps> = (args) => (
+  <>
+    {args.visible && <Img {...args} />}
+  </>
+);
 
 export const DefaultImg = Template.bind({});
 DefaultImg.args = {
-  src: 'https://via.placeholder.com/150',
-  alt: 'Placeholder Image',
   disabled: false,
+  src: 'https://via.placeholder.com/150',
+  alt: 'Image',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };
 
 export const DisabledImg = Template.bind({});
 DisabledImg.args = {
-  src: 'https://via.placeholder.com/150',
-  alt: 'Placeholder Image',
   disabled: true,
+  src: 'https://via.placeholder.com/150',
+  alt: 'Image',
+  backgroundColorDisabled: '#ccc',
+  visible: true
 };

@@ -1,22 +1,21 @@
-import styled from 'styled-components';
-import { CardProps } from './Card.types';
+import styled from "styled-components";
+import { CardProps } from "./Card.types";
 
-const StyledCard = styled.div<{ disabled: boolean }>`
+const StyledCard = styled.div<{ disabled: boolean; backgroundColorDisabled?: string }>`
+  background-color: ${(props) => (props.disabled ? props.backgroundColorDisabled || "#ccc" : "#fff")};
+  color: ${(props) => (props.disabled ? "#999" : "black")};
+  font-size: 16px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: ${(props) => (props.disabled ? '#f5f5f5' : 'white')};
-  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'default')};
+  border: 1px solid ${(props) => (props.disabled ? "#ccc" : "#000")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
-const Card: React.FC<CardProps> = ({ title, content, disabled = false }) => {
+function Card({ disabled = false, label = "Card", backgroundColorDisabled }: CardProps) {
   return (
-    <StyledCard disabled={disabled}>
-      <h3>{title}</h3>
-      <p>{content}</p>
+    <StyledCard disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
+      {label}
     </StyledCard>
   );
-};
+}
 
 export default Card;

@@ -1,4 +1,5 @@
 export interface TextProps {
   disabled?: boolean;
-  children: React.ReactNode;
+  content?: string;
+  backgroundColorDisabled?: string;
 }

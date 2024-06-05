@@ -28,3 +28,19 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+**Build Docker Image**
+ 
+    Open Git Bash and navigate to the root directory of your React app. Then, build the Docker image:
+ 
+    ```
+    docker image build -t wang_yaxiong_assignment12:latest .
+    ```
+ 
+**Run Docker Container**
+ 
+    Run the Docker container with port mapping:
+ 
+    ```
+    docker run -dp 8083:6006 --name wang_yaxiong_assignment12 wang_yaxiong_assignment12:latest
+    ```
