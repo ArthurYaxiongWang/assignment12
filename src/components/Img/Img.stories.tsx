@@ -24,7 +24,7 @@ const Template: StoryFn<ImgStoryProps> = (args) => (
 export const DefaultImg = Template.bind({});
 DefaultImg.args = {
   disabled: false,
-  src: 'https://via.placeholder.com/150',
+  src: 'https://via.placeholder.com/400',
   alt: 'Image',
   backgroundColorDisabled: '#ccc',
   visible: true
@@ -33,7 +33,7 @@ DefaultImg.args = {
 export const DisabledImg = Template.bind({});
 DisabledImg.args = {
   disabled: true,
-  src: 'https://via.placeholder.com/150',
+  src: 'https://via.placeholder.com/400',
   alt: 'Image',
   backgroundColorDisabled: '#ccc',
   visible: true

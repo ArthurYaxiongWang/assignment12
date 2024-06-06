@@ -8,6 +8,16 @@ const StyledHeroImage = styled.div<{ disabled: boolean; backgroundColorDisabled?
   padding: 20px;
   border: 1px solid ${(props) => (props.disabled ? "#ccc" : "#000")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    font-size: 16px;
+    padding: 18px;
+  }
 `;
 
 function HeroImage({ disabled = false, label = "Hero Image", backgroundColorDisabled }: HeroImageProps) {

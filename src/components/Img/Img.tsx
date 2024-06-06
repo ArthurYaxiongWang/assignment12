@@ -5,6 +5,12 @@ const StyledImg = styled.img<{ disabled: boolean; backgroundColorDisabled?: stri
   background-color: ${(props) => (props.disabled ? props.backgroundColorDisabled || "#ccc" : "#fff")};
   filter: ${(props) => (props.disabled ? "grayscale(100%)" : "none")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  width: 100%; 
+  max-width: 400px; 
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 function Img({ disabled = false, src, alt = "Image", backgroundColorDisabled }: ImgProps) {
