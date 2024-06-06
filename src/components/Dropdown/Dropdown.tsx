@@ -1,37 +1,25 @@
 import styled from "styled-components";
+import { DropdownProps } from "./Dropdown.types";
 
-interface DropdownProps {
-  options: string[];
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  value: string;
-}
+const StyledDropdown = styled.select<{ disabled: boolean; backgroundColorDisabled?: string }>`
+  background-color: ${(props) => (props.disabled ? props.backgroundColorDisabled || "#ccc" : "#fff")};
+  color: ${(props) => (props.disabled ? "#999" : "black")};
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid ${(props) => (props.disabled ? "#ccc" : "#000")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
-const StyledDropdown = styled.select`
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 100%;
-
-  @media (min-width: 600px) {
-    max-width: 80%;
-  }
-
-  @media (min-width: 900px) {
-    max-width: 60%;
-  }
-
-  @media (min-width: 1200px) {
-    max-width: 50%;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px;
   }
 `;
 
-function Dropdown({ options, onChange, value }: DropdownProps) {
+function Dropdown({ disabled = false, options = [], backgroundColorDisabled }: DropdownProps) {
   return (
-    <StyledDropdown onChange={onChange} value={value}>
-      {options.map((option) => (
-        <option key={option} value={option}>
+    <StyledDropdown disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
+      {options.map((option, index) => (
+        <option key={index} value={option}>
           {option}
         </option>
       ))}
