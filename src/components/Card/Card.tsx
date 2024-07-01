@@ -31,6 +31,9 @@ const StyledCard = styled.div`
     max-width: 50%;
   }
 `;
+export function sum(a: number, b: number) {
+  return a + b;
+ }
 
 function Card({ label = "Card" }: CardProps) {
   return <StyledCard>{label}</StyledCard>;
