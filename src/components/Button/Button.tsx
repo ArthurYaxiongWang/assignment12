@@ -25,6 +25,10 @@ const StyledButton = styled.button<{ disabled: boolean; backgroundColorDisabled?
   }
 `;
 
+export function sum(a: number, b: number) {
+  return a + b;
+}
+
 function Button({ disabled = false, label = "button", backgroundColorDisabled }: ButtonProps) {
   return (
     <StyledButton disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
