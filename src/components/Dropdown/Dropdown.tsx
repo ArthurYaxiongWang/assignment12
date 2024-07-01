@@ -17,7 +17,7 @@ const StyledDropdown = styled.select<{ disabled: boolean; backgroundColorDisable
 
 function Dropdown({ disabled = false, options = [], backgroundColorDisabled }: DropdownProps) {
   return (
-    <StyledDropdown disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
+    <StyledDropdown data-testid="dropdown" disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
       {options.map((option, index) => (
         <option key={index} value={option}>
           {option}

@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Button from './Button';
 import { ButtonProps } from './Button.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Button',
@@ -28,6 +29,12 @@ DefaultButton.args = {
   backgroundColorDisabled: '#ccc',
   visible: true
 };
+
+DefaultButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByTestId("button"));
+};
+
 
 export const DisabledButton = Template.bind({});
 DisabledButton.args = {

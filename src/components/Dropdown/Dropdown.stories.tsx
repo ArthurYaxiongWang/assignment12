@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Dropdown from './Dropdown';
 import { DropdownProps } from './Dropdown.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Dropdown',
@@ -27,6 +28,11 @@ DefaultDropdown.args = {
   options: ['Option 1', 'Option 2', 'Option 3'],
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DefaultDropdown.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByTestId("dropdown"));
 };
 
 export const DisabledDropdown = Template.bind({});
