@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Text from './Text';
 import { TextProps } from './Text.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Text',
@@ -27,6 +28,11 @@ DefaultText.args = {
   content: 'Text',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DefaultText.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByText("Text"));
 };
 
 export const DisabledText = Template.bind({});

@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Label from './Label';
 import { LabelProps } from './Label.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Label',
@@ -27,6 +28,11 @@ DefaultLabel.args = {
   text: 'Label',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DefaultLabel.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByText("Label"));
 };
 
 export const DisabledLabel = Template.bind({});

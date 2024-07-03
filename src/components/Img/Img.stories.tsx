@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Img from './Img';
 import { ImgProps } from './Img.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Img',
@@ -28,6 +29,11 @@ DefaultImg.args = {
   alt: 'Image',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DefaultImg.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByRole('img'));
 };
 
 export const DisabledImg = Template.bind({});

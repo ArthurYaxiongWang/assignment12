@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import HeroImage from './HeroImage';
 import { HeroImageProps } from './HeroImage.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/HeroImage',
@@ -27,6 +28,11 @@ DefaultHeroImage.args = {
   label: 'Hero Image',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DefaultHeroImage.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.hover(canvas.getByText("Hero Image"));
 };
 
 export const DisabledHeroImage = Template.bind({});

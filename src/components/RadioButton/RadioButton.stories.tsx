@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import RadioButton from './RadioButton';
 import { RadioButtonProps } from './RadioButton.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/RadioButton',
@@ -28,6 +29,11 @@ DefaultRadioButton.args = {
   value: 'Option1',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DefaultRadioButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByRole('radio'));
 };
 
 export const DisabledRadioButton = Template.bind({});

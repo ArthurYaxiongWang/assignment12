@@ -35,11 +35,23 @@ DefaultButton.play = async ({ canvasElement }) => {
   await userEvent.click(canvas.getByTestId("button"));
 };
 
-
 export const DisabledButton = Template.bind({});
 DisabledButton.args = {
   disabled: true,
   label: 'Button',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+export const HoverButton = Template.bind({});
+HoverButton.args = {
+  disabled: false,
+  label: 'Hover Button',
+  backgroundColorDisabled: '#ccc',
+  visible: true
+};
+
+HoverButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.hover(canvas.getByTestId("button"));
 };

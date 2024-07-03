@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Card from './Card';
 import { CardProps } from './Card.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Card',
@@ -27,6 +28,11 @@ DefaultCard.args = {
   label: 'Card',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DefaultCard.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByText("Card"));
 };
 
 export const DisabledCard = Template.bind({});
