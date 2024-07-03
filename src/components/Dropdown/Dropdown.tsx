@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { DropdownProps } from "./Dropdown.types";
+import { getBackgroundColor } from "./Dropdown.lib";
 
 const StyledDropdown = styled.select<{ disabled: boolean; backgroundColorDisabled?: string }>`
-  background-color: ${(props) => (props.disabled ? props.backgroundColorDisabled || "#ccc" : "#fff")};
+  background-color: ${(props) => getBackgroundColor(props.disabled, props.backgroundColorDisabled)};
   color: ${(props) => (props.disabled ? "#999" : "black")};
   font-size: 16px;
   padding: 10px;
@@ -17,7 +18,7 @@ const StyledDropdown = styled.select<{ disabled: boolean; backgroundColorDisable
 
 function Dropdown({ disabled = false, options = [], backgroundColorDisabled }: DropdownProps) {
   return (
-    <StyledDropdown disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
+    <StyledDropdown data-testid="dropdown" disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
       {options.map((option, index) => (
         <option key={index} value={option}>
           {option}

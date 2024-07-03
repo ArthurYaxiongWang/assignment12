@@ -31,7 +31,7 @@ export function sum(a: number, b: number) {
 
 function Button({ disabled = false, label = "button", backgroundColorDisabled }: ButtonProps) {
   return (
-    <StyledButton disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
+    <StyledButton disabled={disabled} data-testid="button" backgroundColorDisabled={backgroundColorDisabled}>
       {label}
     </StyledButton>
   );
