@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Link from './Link';
 import { LinkProps } from './Link.types';
-import { within, userEvent, screen } from '@storybook/testing-library';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Link',
