@@ -31,7 +31,7 @@ PrimaryButton.args = {
 
 PrimaryButton.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  await userEvent.click(canvas.getByText('Primary Button'));
+  await userEvent.click(canvas.getByText('Fail Primary Button'));
 };
 
 export const HoverButton = Template.bind({});
