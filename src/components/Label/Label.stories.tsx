@@ -42,3 +42,10 @@ DisabledLabel.args = {
   backgroundColorDisabled: '#ccc',
   visible: true
 };
+
+DisabledLabel.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const label = canvas.getByText("Label");
+  await userEvent.click(label);
+  label.addEventListener('click', (e) => e.preventDefault());
+};

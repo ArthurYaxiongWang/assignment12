@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Hero from './Hero';
 import { HeroProps } from './Hero.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Hero',
@@ -28,10 +29,22 @@ PrimaryHero.args = {
   visible: true,
 };
 
+PrimaryHero.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.hover(canvas.getByText('Primary Hero'));
+};
+
 export const DisabledHero = Template.bind({});
 DisabledHero.args = {
   title: 'Disabled Hero',
   subtitle: 'This is the disabled hero component',
   disabled: true,
   visible: true,
+};
+
+DisabledHero.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const hero = canvas.getByText('Disabled Hero');
+  await userEvent.click(hero);
+  hero.addEventListener('click', (e) => e.preventDefault());
 };

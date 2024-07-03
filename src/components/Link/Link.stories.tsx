@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Link from './Link';
 import { LinkProps } from './Link.types';
+import { within, userEvent, screen } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Link',
@@ -29,6 +30,13 @@ PrimaryLink.args = {
   visible: true,
 };
 
+PrimaryLink.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const link = canvas.getByText('Primary Link');
+  link.addEventListener('click', (e) => e.preventDefault());
+  await userEvent.click(link);
+};
+
 export const BoldLink = Template.bind({});
 BoldLink.args = {
   text: 'Bold Link',
@@ -37,10 +45,10 @@ BoldLink.args = {
   visible: true,
 };
 
-export const DisabledLink = Template.bind({});
-DisabledLink.args = {
-  text: 'Disabled Link',
-  href: '#',
-  disabled: true,
-  visible: true,
+BoldLink.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const link = canvas.getByText('Bold Link');
+  link.addEventListener('click', (e) => e.preventDefault());
+  await userEvent.click(link);
 };
+

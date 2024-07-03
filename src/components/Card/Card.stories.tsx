@@ -42,3 +42,10 @@ DisabledCard.args = {
   backgroundColorDisabled: '#ccc',
   visible: true
 };
+
+DisabledCard.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const card = canvas.getByText("Card");
+  await userEvent.click(card);
+  card.addEventListener('click', (e) => e.preventDefault());
+};

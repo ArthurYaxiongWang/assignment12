@@ -29,15 +29,21 @@ PrimaryButton.args = {
   visible: true
 };
 
+PrimaryButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByText('Primary Button'));
+};
+
 export const HoverButton = Template.bind({});
 HoverButton.args = {
   disabled: false,
   label: 'Hover Button',
   visible: true
 };
+
 HoverButton.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const button = canvas.getByTestId('button');
+  const button = canvas.getByText('Hover Button');
   await userEvent.hover(button);
 };
 
@@ -46,4 +52,11 @@ DisabledButton.args = {
   disabled: true,
   label: 'Disabled Button',
   visible: true
+};
+
+DisabledButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = canvas.getByText('Disabled Button');
+  await userEvent.click(button);
+  button.addEventListener('click', (e) => e.preventDefault());
 };

@@ -32,7 +32,7 @@ DefaultHeroImage.args = {
 
 DefaultHeroImage.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  await userEvent.hover(canvas.getByText("Hero Image"));
+  await userEvent.hover(canvas.getByText('Hero Image'));
 };
 
 export const DisabledHeroImage = Template.bind({});
@@ -41,4 +41,11 @@ DisabledHeroImage.args = {
   label: 'Hero Image',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DisabledHeroImage.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const heroImage = canvas.getByText('Hero Image');
+  await userEvent.click(heroImage);
+  heroImage.addEventListener('click', (e) => e.preventDefault());
 };

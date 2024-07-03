@@ -44,3 +44,10 @@ DisabledRadioButton.args = {
   backgroundColorDisabled: '#ccc',
   visible: true
 };
+
+DisabledRadioButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const radioButton = canvas.getByRole('radio');
+  await userEvent.click(radioButton);
+  radioButton.addEventListener('click', (e) => e.preventDefault());
+};
