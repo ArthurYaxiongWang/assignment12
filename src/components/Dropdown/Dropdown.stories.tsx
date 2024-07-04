@@ -45,7 +45,7 @@ DisabledDropdown.args = {
 
 DisabledDropdown.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  const dropdown = canvas.getByTestId('Fail dropdown');
+  const dropdown = canvas.getByTestId('dropdown');
   await userEvent.click(dropdown);  
 };
 
