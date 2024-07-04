@@ -1,6 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import Label from './Label';
 import { LabelProps } from './Label.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'ReactComponentLibrary/Label',
@@ -29,10 +30,22 @@ DefaultLabel.args = {
   visible: true
 };
 
+DefaultLabel.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByText("Label"));
+};
+
 export const DisabledLabel = Template.bind({});
 DisabledLabel.args = {
   disabled: true,
   text: 'Label',
   backgroundColorDisabled: '#ccc',
   visible: true
+};
+
+DisabledLabel.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const label = canvas.getByText("Label");
+  await userEvent.click(label);
+  label.addEventListener('click', (e) => e.preventDefault());
 };
